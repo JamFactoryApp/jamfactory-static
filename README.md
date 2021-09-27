@@ -1,0 +1,1 @@
+# jamfactory-static
