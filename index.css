@@ -1,0 +1,344 @@
+/*HTML ELEMENTS*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-family: sans-serif;
+    transition: 0.5s;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    color: hsla(0, 0%, 100%, .8);
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    min-height: 100vh;
+    background: #121217;
+}
+
+/*######################################################################*/
+/*GENERAL CLASSES*/
+.block {
+    display: block;
+}
+
+.none {
+    display: none;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.jy-center {
+    justify-content: center;
+}
+
+.al-center {
+    align-items: center;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.re-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.re-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+/*######################################################################*/
+/*LANDINGPAGE*/
+.landing-page-section {
+    /*height: 150vh;*/
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    /*background: linear-gradient(45deg, #121217 60%, #060311 40%);*/
+}
+
+/*######################################################################*/
+/*BACKGROUND*/
+.gray-background {
+    height: 100vh;
+    position: absolute;
+    background: linear-gradient(45deg, #121217 50%, /*rgba(18, 18, 23, 1) 60%, transparent 60.5%*/ transparent 50%);
+    z-index: -1;
+}
+
+.blue-background {
+    height: 100vh;
+    position: absolute;
+    background: linear-gradient(45deg, transparent 50%, #060311 50%);
+    z-index: -2;
+}
+
+@media screen and (max-width: 1200px) {
+    .gray-background {
+        background: linear-gradient(45deg, #121217 55%, transparent 45%);
+    }
+
+    .blue-background {
+        background: linear-gradient(45deg, transparent 55%, #060311 45%);
+    }
+}
+
+#record_svg {
+    animation: record 10s infinite linear;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+@keyframes record {
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+.svg-container {
+    position: absolute;
+    right: 0;
+    opacity: 0.7;
+}
+
+.music-svg {
+    width: 100vh;
+    height: 100vh;
+}
+
+@media screen and (max-width: 1450px) {
+    .music-svg {
+        width: 90vh;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .music-svg {
+        width: 80vh;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .music-svg {
+        width: 60vh;
+    }
+}
+
+/*######################################################################*/
+/*WORKINGPAGE*/
+.working-section {
+    /*border: 1px solid red;*/
+    margin-top: -50vh;
+    height: 100vh;
+    background: transparent;
+    border-top: 1px solid hsla(0, 0%, 100%, .8);
+}
+
+/*######################################################################*/
+/*HEADER*/
+header {
+    border-bottom: 1px solid hsla(0, 0%, 100%, .8);
+    height: 10vh;
+    padding: 20px;
+}
+
+.header-brand-container {
+    width: 200px;
+    float: left;
+    margin-right: auto;
+    cursor: default
+}
+
+.header-brand {
+    font-size: 30px;
+    font-weight: bold;
+    /*color: #A379C9;*/
+    /*color: #306B34;*/
+    /*color: #623CEA;*/
+    /*color: #2AFC98;*/
+    /*color: #5FAD41;*/
+    color: #912F40;
+}
+
+.header-brand > * {
+    color: inherit;
+}
+
+.header-button-container {
+    width: 150px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.header-button {
+    border-radius: 25px;
+    background: rgba(0, 166, 237, 0.1);
+}
+
+.header-button-text {
+    font-weight: bold;
+    font-size: 15px;
+    /*font-size: 1.0em;*/
+    color: #00A6ED;
+}
+
+/*######################################################################*/
+/*MAIN*/
+main {
+    height: 90vh;
+    padding-left: 40px;
+}
+
+.main-text-container {
+    height: 60%;
+}
+
+.main-text-header {
+    font-size: 50px;
+    padding: 10px;
+    height: 80%;
+}
+
+.main-text-header-large {
+    font-size: 100px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 1600px) {
+    .main-text-header-large {
+        font-size: 75px;
+        font-weight: bold;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .main-text-header-large {
+        font-size: 60px;
+    }
+
+    .main-text-header {
+        font-size: 40px;
+    }
+}
+
+.main-text-body {
+    font-size: 18px;
+    padding-left: 10px;
+    height: 20%;
+}
+
+.main-content-container {
+    width: 35%;
+    height: 75px;
+}
+
+@media screen and (max-width: 1200px) {
+    .main-content-container {
+        width: 50%;
+    }
+
+    .main-text-header {
+        padding-top: 25px;
+    }
+
+    .main-text-header-large {
+        font-size: 75px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .main-text-header-large {
+        font-size: 65px;
+    }
+}
+
+.main-join-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.main-join-input-container {
+    width: 70%;
+    float: left;
+    margin-right: auto;
+    padding: 10px;
+}
+
+.jamlabel-input {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+.jamlabel-input::-webkit-input-placeholder { /* WebKit browsers */
+    text-transform: none;
+}
+
+.jamlabel-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    text-transform: none;
+}
+
+.jamlabel-input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    text-transform: none;
+}
+
+.jamlabel-input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    text-transform: none;
+}
+
+.jamlabel-input::placeholder { /* Recent browsers */
+    text-transform: none;
+}
+
+.main-join-button-container {
+    width: 30%;
+    float: left;
+    cursor: pointer;
+}
+
+.main-join-button {
+    background: rgba(255, 149, 10, 0.1);
+    border-radius: 15px;
+}
+
+.main-join-button-text {
+    font-weight: bold;
+    font-size: 24px;
+    color: #FF950A;
+}
+
+/*#arrow_svg {*/
+/*    transform: rotateZ(180deg);*/
+/*}*/
+
+#arrow1 {
+    stroke-dasharray: 150;
+    stroke-dashoffset: 150;
+    animation: arrow 5s infinite alternate-reverse;
+}
+
+@keyframes arrow {
+    30%, 100% {
+        stroke-dashoffset: 0;
+    }
+}
