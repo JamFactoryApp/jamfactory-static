@@ -16,8 +16,12 @@
     display: none;
 }
 
+html {
+    height: 100%;
+}
+
 body {
-    min-height: 100vh;
+    height: 100%;
     background: #121217;
 }
 
@@ -74,14 +78,14 @@ body {
 /*######################################################################*/
 /*BACKGROUND*/
 .gray-background {
-    height: 100vh;
+    height: 100%;
     position: absolute;
     background: linear-gradient(45deg, #121217 50%, /*rgba(18, 18, 23, 1) 60%, transparent 60.5%*/ transparent 50%);
     z-index: -1;
 }
 
 .blue-background {
-    height: 100vh;
+    height: 100%;
     position: absolute;
     background: linear-gradient(45deg, transparent 50%, #060311 50%);
     z-index: -2;
@@ -94,6 +98,16 @@ body {
 
     .blue-background {
         background: linear-gradient(45deg, transparent 55%, #060311 45%);
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .gray-background {
+        display: none;
+    }
+
+    .blue-background {
+        background: #060311;
     }
 }
 
@@ -116,28 +130,68 @@ body {
     position: absolute;
     right: 0;
     opacity: 0.7;
+    /*border: #95C623 1px solid;*/
+    height: 100%;
+    width: 50%;
 }
 
 .music-svg {
-    width: 100vh;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 
-@media screen and (max-width: 1450px) {
-    .music-svg {
-        width: 90vh;
-    }
-}
+/*@media screen and (max-width: 1450px) {*/
+/*    .svg-container {*/
+/*        width: 90%;*/
+/*    }*/
+/*}*/
 
-@media screen and (max-width: 1300px) {
-    .music-svg {
-        width: 80vh;
-    }
-}
+/*@media screen and (max-width: 1300px) {*/
+/*    .music-svg {*/
+/*        width: 80%;*/
+/*    }*/
+/*}*/
 
 @media screen and (max-width: 1200px) {
-    .music-svg {
-        width: 60vh;
+    .svg-container {
+        top: -10%;
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .svg-container {
+        width: 80%;
+        height: 50%;
+        top: 60px;
+        opacity: 0.5;
+        display: flex;
+        align-items: center;
+        justify-content: right;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .svg-container {
+        top: 30px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .svg-container {
+        justify-content: center;
+        position: relative;
+    }
+
+    .blue-background {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .svg-container {
+        width: 100%;
     }
 }
 
@@ -145,8 +199,8 @@ body {
 /*WORKINGPAGE*/
 .working-section {
     /*border: 1px solid red;*/
-    margin-top: -50vh;
-    height: 100vh;
+    margin-top: -50%;
+    height: 100%;
     background: transparent;
     border-top: 1px solid hsla(0, 0%, 100%, .8);
 }
@@ -155,7 +209,7 @@ body {
 /*HEADER*/
 header {
     border-bottom: 1px solid hsla(0, 0%, 100%, .8);
-    height: 10vh;
+    height: 10%;
     padding: 20px;
 }
 
@@ -183,7 +237,7 @@ header {
 
 .header-button-container {
     width: 150px;
-    padding: 5px;
+    /*padding: 5px;*/
     cursor: pointer;
 }
 
@@ -202,18 +256,25 @@ header {
 /*######################################################################*/
 /*MAIN*/
 main {
-    height: 90vh;
+    height: 90%;
     padding-left: 40px;
 }
 
 .main-text-container {
     height: 60%;
+    padding: 10px;
+}
+
+.main-text-container > div {
+    height: 100%;
+    width: 100%;
 }
 
 .main-text-header {
     font-size: 50px;
-    padding: 10px;
     height: 80%;
+    display: flex;
+    align-items: center;
 }
 
 .main-text-header-large {
@@ -221,52 +282,26 @@ main {
     font-weight: bold;
 }
 
-@media screen and (max-width: 1600px) {
-    .main-text-header-large {
-        font-size: 75px;
-        font-weight: bold;
-    }
-}
-
-@media screen and (max-width: 1300px) {
-    .main-text-header-large {
-        font-size: 60px;
-    }
-
-    .main-text-header {
-        font-size: 40px;
-    }
-}
-
 .main-text-body {
     font-size: 18px;
-    padding-left: 10px;
     height: 20%;
+}
+
+.main-text-body > div {
+    width: 400px;
+}
+
+.main-control-container {
+    height: 40%;
+    /*border: 1px solid purple;*/
 }
 
 .main-content-container {
     width: 35%;
+}
+
+.main-content-container > * {
     height: 75px;
-}
-
-@media screen and (max-width: 1200px) {
-    .main-content-container {
-        width: 50%;
-    }
-
-    .main-text-header {
-        padding-top: 25px;
-    }
-
-    .main-text-header-large {
-        font-size: 75px;
-    }
-}
-
-@media screen and (max-width: 1100px) {
-    .main-text-header-large {
-        font-size: 65px;
-    }
 }
 
 .main-join-container {
@@ -327,18 +362,206 @@ main {
     color: #FF950A;
 }
 
+.main-button-divider > * {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+
+.main-button-line {
+    border: 1px solid hsla(0, 0%, 100%, .8);
+    flex-grow: 5;
+}
+
+.main-button-or {
+    flex-grow: 1;
+}
+
+.main-button-or > * {
+    font-size: 24px;
+}
+
+.main-create-container {
+    background: rgba(149, 198, 35, 0.1);
+    border-radius: 15px;
+    height: 100%;
+    width: 75%;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.main-text-create-container {
+    color: #95C623;
+    font-weight: bold;
+    font-size: 17px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 1600px) {
+    .main-text-header-large {
+        font-size: 75px;
+        font-weight: bold;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .main-text-header-large {
+        font-size: 60px;
+    }
+
+    .main-text-header {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .main-content-container {
+        width: 50%;
+    }
+
+    .main-text-header {
+        padding-top: 25px;
+    }
+
+    .main-text-header-large {
+        font-size: 75px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .main-text-header-large {
+        font-size: 65px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .main-text-body {
+        padding-top: 10px;
+        height: auto;
+    }
+
+    .main-text-body > div {
+        width: 100%;
+    }
+
+    .main-content-container {
+        width: 75%;
+        padding: 10px;
+    }
+
+    .main-control-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main-text-container {
+        padding: 50px 50px 0 50px;
+    }
+
+    .main-text-header {
+        /*align-items: center;*/
+        align-items: end;
+        /*justify-content: center;*/
+    }
+
+    main {
+        padding-left: 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .main-content-container {
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .main-content-container {
+        width: 100%;
+    }
+
+    .main-control-container {
+        padding: 0 20px;
+    }
+
+    .main-text-container {
+        padding: 0 25px;
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
+    }
+
+    .main-text-container > div {
+        height: inherit;
+        width: inherit;
+        padding-bottom: 10px;
+    }
+
+    .jamlabel-input {
+        font-size: 24px;
+    }
+
+    .main-join-button-text {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .main-text-body {
+        font-size: 14px;
+    }
+
+    .main-text-header {
+        font-size: 30px;
+    }
+
+    .main-text-header-large {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+
+    .main-text-header {
+        font-size: 25px;
+    }
+
+    .main-text-header-large {
+        font-size: 45px;
+    }
+
+    .main-control-container {
+        padding: 0 10px;
+    }
+
+    .jamlabel-input {
+        font-size: 18px;
+    }
+
+    .main-join-button-text {
+        font-size: 16px;
+    }
+
+    .main-text-create-container {
+        font-size: 14px;
+    }
+}
+
 /*#arrow_svg {*/
 /*    transform: rotateZ(180deg);*/
 /*}*/
 
-#arrow1 {
-    stroke-dasharray: 150;
-    stroke-dashoffset: 150;
-    animation: arrow 5s infinite alternate-reverse;
-}
+/*#arrow1 {*/
+/*    stroke-dasharray: 150;*/
+/*    stroke-dashoffset: 150;*/
+/*    animation: arrow 5s infinite alternate-reverse;*/
+/*}*/
 
-@keyframes arrow {
-    30%, 100% {
-        stroke-dashoffset: 0;
-    }
-}
+/*@keyframes arrow {*/
+/*    30%, 100% {*/
+/*        stroke-dashoffset: 0;*/
+/*    }*/
+/*}*/
