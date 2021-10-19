@@ -63,6 +63,22 @@ module.exports = {
         compress: true,
         port: 9000,
         watchFiles: ['src/**/*'],
+        headers: {
+            "Access-Control-Allow-Origin": "localhost",
+        },
+        proxy: {
+            '/jam/**': {
+                target: 'http://localhost:4200',
+                secure: false,
+                changeOrigin: true,
+            },
+            '/api/v1/**': {
+                target: 'http://localhost:3000/api/v1',
+                secure: false,
+                changeOrigin: true,
+                pathRewrite: { '^/api/v1': '' },
+            }
+        },
     },
 
 };
