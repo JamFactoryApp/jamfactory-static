@@ -48,4 +48,4 @@ Run `npm run build` to build the project. The build artifacts will be stored in 
 
 Run `docker-compose up -d` to start a dev server inside a docker container. Navigate to `http://localhost:9000/`. The site will automatically reload if you change any of the source files.
 
-**For Windows**: Make shure the src directory is enabled for file sharing in docker. See [https://stackoverflow.com/a/60814428](https://stackoverflow.com/a/60814428)
+**For Windows**: Make sure the src directory is enabled for file sharing in docker. See [https://stackoverflow.com/a/60814428](https://stackoverflow.com/a/60814428)
