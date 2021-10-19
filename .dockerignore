@@ -1,0 +1,11 @@
+Dockerfile*
+docker-compose*
+
+.git
+.gitignore
+.github
+dist
+node_modules
+.editorconfig
+README.md
+
