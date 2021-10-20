@@ -360,7 +360,18 @@ main {
     background: rgba(255, 149, 10, 0.1);
     border-radius: 15px;
 }
+.main-join-button:hover {
+    background: rgba(255, 149, 10, 0.15);
+    border-radius: 15px;
+}
+.main-join-button.disabled {
+    background: rgba(255, 149, 10, 0.05);
 
+}
+
+.main-join-button-text.disabled {
+    color: #804a03;
+}
 .main-join-button-text {
     font-weight: bold;
     font-size: 24px;
@@ -393,6 +404,10 @@ main {
     width: 75%;
     cursor: pointer;
     padding: 10px;
+}
+
+.main-create-container:hover {
+    background: rgba(149, 198, 35, 0.15);
 }
 
 .main-text-create-container {

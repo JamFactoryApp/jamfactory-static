@@ -1,37 +1,89 @@
 
 import "./styles.css";
 let user;
+let loginButtonAction = onSpotifyAuth;
 getCurrentUser()
 
+document.getElementById("main-text").innerText= "Listen to all of your favorite songs and the ones of your friends too."
+
 function onJoin() {
-     let label = document.getElementById("jamlabel").value
-     if (label.length === 5) {
-          window.location.href  = "./jam/" + label.toUpperCase();
+     let body = {label: document.getElementById("jamlabel-input").value}
+    console.log(JSON.stringify(body))
+     if (body.label.length === 5) {
+         fetch('./api/v1/jam/join',
+             {
+                 credentials: "include",
+                 method: "PUT",
+                 body: JSON.stringify(body),
+                 headers: {
+                     'Content-Type': 'application/json'
+                 },
+             })
+             .then(response => response.json())
+             .then(json => {
+                 window.location.href  = "./jam/" + json.label;
+             }).catch(reason => {
+                console.log(reason)
+         })
+
      }
 }
 
+document.getElementById("jamlabel-input").addEventListener("keyup", checkForValidity)
+document.getElementById("jamlabel-input").addEventListener("change", checkForValidity)
+document.getElementById("join-button").addEventListener("click", onJoin)
 function checkForValidity() {
-     document.getElementById("joinbutton").disabled = document.getElementById("jamlabel").value.length !== 5;
+    if (document.getElementById("jamlabel-input").value.length !== 5) {
+        document.getElementById("join-button").classList.add('disabled')
+        document.getElementById("join-button-text").classList.add('disabled')
+    } else {
+        document.getElementById("join-button").classList.remove('disabled')
+        document.getElementById("join-button-text").classList.remove('disabled')
+    }
+
 }
 
 function getCurrentUser() {
-    fetch('http://localhost:3000/api/v1/me')
+    fetch('./api/v1/me',
+        {
+            credentials: "include"
+        })
         .then(response => response.json())
-        .then(user => {
-             console.log(user)
-             if (user.joined_label !== '') {
-                  window.location.href  = "./jam/" + user.joined_label;
+        .then(json => {
+             if (json.joined_label !== '') {
+                  window.location.href  = "./jam/" + json.joined_label;
              }
-             if (user.spotify_authorized) {
-                  document.getElementById("loginbuttontext").innerText = "Create your own"
+             if (json.spotify_authorized) {
+                 console.log("Spotify")
+                 loginButtonAction = createJamSession
+                 document.getElementById("login-button-text").innerText = "Create your own"
              }
         });
 }
 
+document.getElementById("login-button").addEventListener("click", listenerFunction)
+function listenerFunction() {
+    loginButtonAction();
+}
+function onSpotifyAuth() {
+    fetch('./api/v1/auth/login', {
+        credentials: "include"
+    })
+        .then(response => response.json())
+        .then(json => {
+            console.log(json)
+            window.location.href  = json.url;
+        })
+}
+
 function createJamSession() {
-     fetch('http://localhost:3000/api/v1/jam/create')
-         .then(response => response.json().label)
-         .then(label => {
-              window.location.href  = "./jam/" + label;
+     fetch('./api/v1/jam/create',
+         {
+             credentials: "include"
+         })
+         .then(response => response.json())
+         .then(json => {
+             console.log(json)
+              window.location.href  = "./jam/" + json.label;
          })
 }
