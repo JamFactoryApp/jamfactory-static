@@ -21,7 +21,7 @@ main {
 }
 
 .main-content-container > * {
-    height: 75px;
+    height: 90px;
 }
 
 .main-create-container {
@@ -163,6 +163,8 @@ main {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 15px;
     padding: 10px;
+    position: relative;
+    height: 75px;
 }
 
 .jamlabel-input {
@@ -174,6 +176,15 @@ main {
     text-transform: uppercase;
     padding: 10px;
     margin-right: auto;
+}
+
+.jamlabel-input-error {
+    color: #FF950A;
+    position: absolute;
+    top: 80px;
+    left: 15px;
+    width: 100%;
+
 }
 
 .main-join-button-container {

@@ -18,10 +18,18 @@ function onJoin() {
                      'Content-Type': 'application/json'
                  },
              })
-             .then(response => response.json())
+             .then(response => {
+                 if (response.ok) {
+                     return response.json();
+                 } else {
+                     throw new Error("No JamSession found for provided label");
+                 }
+             })
              .then(json => {
                  window.location.href  = "./jam/" + json.label;
              }).catch(reason => {
+                 document.getElementById("join-error").innerText = reason
+                 document.getElementById("join-error").hidden = false
          })
 
      }
@@ -31,6 +39,7 @@ document.getElementById("jamlabel-input").addEventListener("keyup", checkForVali
 document.getElementById("jamlabel-input").addEventListener("change", checkForValidity)
 document.getElementById("join-button").addEventListener("click", onJoin)
 function checkForValidity() {
+    document.getElementById("join-error").hidden = true
     if (document.getElementById("jamlabel-input").value.length !== 5) {
         document.getElementById("join-button").classList.add('disabled')
     } else {
