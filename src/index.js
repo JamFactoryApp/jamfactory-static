@@ -8,7 +8,6 @@ document.getElementById("main-text").innerText= "Listen to all of your favorite 
 
 function onJoin() {
      let body = {label: document.getElementById("jamlabel-input").value}
-    console.log(JSON.stringify(body))
      if (body.label.length === 5) {
          fetch('./api/v1/jam/join',
              {
@@ -23,7 +22,6 @@ function onJoin() {
              .then(json => {
                  window.location.href  = "./jam/" + json.label;
              }).catch(reason => {
-                console.log(reason)
          })
 
      }
@@ -52,9 +50,8 @@ function getCurrentUser() {
                   window.location.href  = "./jam/" + json.joined_label;
              }
              if (json.spotify_authorized) {
-                 console.log("Spotify")
                  loginButtonAction = createJamSession
-                 document.getElementById("login-button-text").innerText = "Create your own"
+                 document.getElementById("login-button").innerText = "Create your own"
              }
         });
 }
@@ -69,7 +66,6 @@ function onSpotifyAuth() {
     })
         .then(response => response.json())
         .then(json => {
-            console.log(json)
             window.location.href  = json.url;
         })
 }
@@ -81,7 +77,6 @@ function createJamSession() {
          })
          .then(response => response.json())
          .then(json => {
-             console.log(json)
               window.location.href  = "./jam/" + json.label;
          })
 }
