@@ -1,5 +1,5 @@
 
-import "./styles.css";
+import "./index.css";
 let user;
 let loginButtonAction = onSpotifyAuth;
 getCurrentUser()
@@ -35,10 +35,8 @@ document.getElementById("join-button").addEventListener("click", onJoin)
 function checkForValidity() {
     if (document.getElementById("jamlabel-input").value.length !== 5) {
         document.getElementById("join-button").classList.add('disabled')
-        document.getElementById("join-button-text").classList.add('disabled')
     } else {
         document.getElementById("join-button").classList.remove('disabled')
-        document.getElementById("join-button-text").classList.remove('disabled')
     }
 
 }

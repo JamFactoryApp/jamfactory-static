@@ -1,0 +1,108 @@
+/*######################################################################*/
+/*BACKGROUND*/
+.gray-background {
+    height: 100%;
+    position: fixed;
+    background: linear-gradient(45deg, #121217 50%, /*rgba(18, 18, 23, 1) 60%, transparent 60.5%*/ transparent 50%);
+    z-index: -1;
+}
+
+.blue-background {
+    height: 100%;
+    position: fixed;
+    background: linear-gradient(45deg, transparent 50%, #060311 50%);
+    z-index: -2;
+}
+
+@media screen and (max-width: 1200px) {
+    .gray-background {
+        background: linear-gradient(45deg, #121217 55%, transparent 45%);
+    }
+
+    .blue-background {
+        background: linear-gradient(45deg, transparent 55%, #060311 45%);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .gray-background {
+        display: none;
+    }
+
+    .blue-background {
+        background: #060311;
+    }
+}
+
+#record_svg {
+    animation: record 10s infinite linear;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+@keyframes record {
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+.svg-container {
+    position: absolute;
+    right: 0;
+    opacity: 0.7;
+    /*border: #95C623 1px solid;*/
+    height: 100%;
+    width: 50%;
+}
+
+.music-svg {
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+    .svg-container {
+        top: -10%;
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .svg-container {
+        width: 80%;
+        height: 50%;
+        top: 60px;
+        opacity: 0.3;
+        display: flex;
+        align-items: center;
+        justify-content: right;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .svg-container {
+        top: 30px;
+        width: 100%;
+    }
+
+    .svg-container {
+        justify-content: center;
+        position: relative;
+    }
+
+    .blue-background {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (max-height: 400px) {
+   .svg-container {
+       width: 50%;
+       float: right;
+
+   }
+}

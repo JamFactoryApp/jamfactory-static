@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:400');
+@import url('https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp');
+@import url('https://use.fontawesome.com/releases/v5.15.3/css/all.css');
+
+@import "~normalize.css";
+@import "styles/main.css";
+@import "styles/buttons.css";
+@import "styles/background.css";
+@import "styles/header.css";
+@import "styles/content.css";
+
+
+
