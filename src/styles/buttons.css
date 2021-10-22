@@ -7,8 +7,8 @@
     text-align: center;
 }
 
-.button.disabled{
-    cursor:default;
+.button.disabled {
+    cursor: default;
 }
 
 .button-big {

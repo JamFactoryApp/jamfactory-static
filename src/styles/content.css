@@ -3,6 +3,7 @@
 main {
     min-height: calc(100vh - 80px);
     padding-left: 40px;
+    padding-bottom: 40px;
     overflow: hidden;
     position: fixed;
 }
@@ -20,10 +21,6 @@ main {
     width: 35%;
 }
 
-.main-content-container > * {
-    height: 90px;
-}
-
 .main-create-container {
     height: 50px;
     width: 80%;
@@ -39,6 +36,7 @@ main {
     main {
         height: calc(100% - 70px);
     }
+
 }
 
 @media (max-height: 576px) {
@@ -50,16 +48,12 @@ main {
 
 @media screen and (max-width: 768px) {
 
-    main{
+    main {
         padding-left: 0;
     }
 
     .main-text-body {
         padding-top: 10px;
-    }
-
-    .main-content-container > * {
-        height: 50px;
     }
 
     .text-block {
@@ -193,13 +187,21 @@ main {
     float: left;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (max-height: 768px) {
     .jamlabel-input {
         font-size: 18px;
     }
 
     .main-join-container {
         padding: 5px;
+        height: 50px;
+    }
+
+    .jamlabel-input-error {
+        color: #FF950A;
+        position: absolute;
+        top: 52px;
+        font-size: 12px;
     }
 }
 
@@ -209,6 +211,7 @@ main {
     width: 60%;
     text-align: center;
     font-size: 24px;
+    height: 75px;
 }
 
 .main-button-divider > hr {

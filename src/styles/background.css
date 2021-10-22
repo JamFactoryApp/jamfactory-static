@@ -100,9 +100,9 @@
 }
 
 @media (max-height: 400px) {
-   .svg-container {
-       width: 50%;
-       float: right;
+    .svg-container {
+        width: 50%;
+        float: right;
 
-   }
+    }
 }

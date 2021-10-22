@@ -31,8 +31,9 @@ module.exports = {
         new MiniCssExtractPlugin(),
         new CopyPlugin({
             patterns: [
-            { from: 'src/assets/robots.txt', to: 'robots.txt' }
-        ]})
+                {from: 'src/assets/robots.txt', to: 'robots.txt'}
+            ]
+        })
     ].concat(multipleHtmlPlugins),
     module: {
         rules: [
@@ -78,7 +79,7 @@ module.exports = {
                 target: 'http://localhost:3000/api/v1',
                 secure: false,
                 changeOrigin: true,
-                pathRewrite: { '^/api/v1': '' },
+                pathRewrite: {'^/api/v1': ''},
             }
         },
     },

@@ -3,10 +3,10 @@ name: Build and release docker container
 on:
   push:
     tags:
-    - 'v*.*.*'
+      - 'v*.*.*'
   pull_request:
     branches:
-    - 'master'
+      - 'master'
 
 jobs:
   docker:
