@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 const fs = require("fs");
 
 let htmlPageNames = [];
@@ -15,7 +16,6 @@ let multipleHtmlPlugins = htmlPageNames.map(name => {
     return new HtmlWebpackPlugin({
         template: `./src/${name}.html`,
         filename: `${name}.html`,
-        title: "JamFactory",
         favicon: "./src/assets/favicon.ico",
         chunks: ['main']
     })
@@ -29,6 +29,11 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin(),
+        new CopyPlugin({
+            patterns: [
+                {from: 'src/assets/robots.txt', to: 'robots.txt'}
+            ]
+        })
     ].concat(multipleHtmlPlugins),
     module: {
         rules: [
@@ -74,7 +79,7 @@ module.exports = {
                 target: 'http://localhost:3000/api/v1',
                 secure: false,
                 changeOrigin: true,
-                pathRewrite: { '^/api/v1': '' },
+                pathRewrite: {'^/api/v1': ''},
             }
         },
     },

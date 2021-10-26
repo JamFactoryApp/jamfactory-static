@@ -1,0 +1,35 @@
+.header {
+    border-bottom: 1px solid hsla(0, 0%, 100%, .8);
+    height: 80px;
+    padding: 15px;
+}
+
+.header-brand {
+    width: 200px;
+    cursor: default;
+    font-size: 30px;
+    font-weight: bold;
+    color: #912F40;
+    /*color: #A379C9;*/
+    /*color: #306B34;*/
+    /*color: #623CEA;*/
+    /*color: #2AFC98;*/
+    /*color: #5FAD41;*/
+}
+
+.header-brand > * {
+    color: inherit;
+}
+
+.header-button-container {
+    width: 150px;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .header {
+        height: 70px;
+        padding: 10px 15px;
+    }
+}
+

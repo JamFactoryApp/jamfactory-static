@@ -1,46 +1,28 @@
+import "./index.css";
 
-import "./styles.css";
 let user;
 let loginButtonAction = onSpotifyAuth;
 getCurrentUser()
+getQueryParams()
 
-document.getElementById("main-text").innerText= "Listen to all of your favorite songs and the ones of your friends too."
+document.getElementById("main-text").innerText = "Listen to all of your favorite songs and the ones of your friends too."
 
 function onJoin() {
-     let body = {label: document.getElementById("jamlabel-input").value}
-    console.log(JSON.stringify(body))
-     if (body.label.length === 5) {
-         fetch('./api/v1/jam/join',
-             {
-                 credentials: "include",
-                 method: "PUT",
-                 body: JSON.stringify(body),
-                 headers: {
-                     'Content-Type': 'application/json'
-                 },
-             })
-             .then(response => response.json())
-             .then(json => {
-                 window.location.href  = "./jam/" + json.label;
-             }).catch(reason => {
-                console.log(reason)
-         })
-
-     }
+    let label = document.getElementById("jamlabel-input").value
+    window.location.href = "./jam/" + label;
 }
 
 document.getElementById("jamlabel-input").addEventListener("keyup", checkForValidity)
 document.getElementById("jamlabel-input").addEventListener("change", checkForValidity)
 document.getElementById("join-button").addEventListener("click", onJoin)
+
 function checkForValidity() {
+    document.getElementById("join-error").hidden = true
     if (document.getElementById("jamlabel-input").value.length !== 5) {
         document.getElementById("join-button").classList.add('disabled')
-        document.getElementById("join-button-text").classList.add('disabled')
     } else {
         document.getElementById("join-button").classList.remove('disabled')
-        document.getElementById("join-button-text").classList.remove('disabled')
     }
-
 }
 
 function getCurrentUser() {
@@ -50,40 +32,44 @@ function getCurrentUser() {
         })
         .then(response => response.json())
         .then(json => {
-             if (json.joined_label !== '') {
-                  window.location.href  = "./jam/" + json.joined_label;
-             }
-             if (json.spotify_authorized) {
-                 console.log("Spotify")
-                 loginButtonAction = createJamSession
-                 document.getElementById("login-button-text").innerText = "Create your own"
-             }
+            if (json.joined_label !== '') {
+                window.location.href = "./jam/" + json.joined_label;
+            }
+            if (json.spotify_authorized) {
+                loginButtonAction = createJamSession
+                document.getElementById("login-button").innerText = "Create your own"
+            }
         });
 }
 
+function getQueryParams() {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+    if (params.error) {
+        document.getElementById("join-error").innerText = params.error
+        document.getElementById("join-error").hidden = false
+    }
+    if (params.label) {
+        document.getElementById("jamlabel-input").value = params.label
+    }
+}
+
 document.getElementById("login-button").addEventListener("click", listenerFunction)
+
 function listenerFunction() {
     loginButtonAction();
 }
+
 function onSpotifyAuth() {
     fetch('./api/v1/auth/login', {
         credentials: "include"
     })
         .then(response => response.json())
         .then(json => {
-            console.log(json)
-            window.location.href  = json.url;
+            window.location.href = json.url;
         })
 }
 
 function createJamSession() {
-     fetch('./api/v1/jam/create',
-         {
-             credentials: "include"
-         })
-         .then(response => response.json())
-         .then(json => {
-             console.log(json)
-              window.location.href  = "./jam/" + json.label;
-         })
+    window.location.href = "./jam/create";
 }
