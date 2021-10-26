@@ -3,36 +3,13 @@ import "./index.css";
 let user;
 let loginButtonAction = onSpotifyAuth;
 getCurrentUser()
+getQueryParams()
 
 document.getElementById("main-text").innerText = "Listen to all of your favorite songs and the ones of your friends too."
 
 function onJoin() {
-    let body = {label: document.getElementById("jamlabel-input").value}
-    if (body.label.length === 5) {
-        fetch('./api/v1/jam/join',
-            {
-                credentials: "include",
-                method: "PUT",
-                body: JSON.stringify(body),
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error("No JamSession found for provided label");
-                }
-            })
-            .then(json => {
-                window.location.href = "./jam/" + json.label;
-            }).catch(reason => {
-            document.getElementById("join-error").innerText = reason
-            document.getElementById("join-error").hidden = false
-        })
-
-    }
+    let label = document.getElementById("jamlabel-input").value
+    window.location.href = "./jam/" + label;
 }
 
 document.getElementById("jamlabel-input").addEventListener("keyup", checkForValidity)
@@ -46,7 +23,6 @@ function checkForValidity() {
     } else {
         document.getElementById("join-button").classList.remove('disabled')
     }
-
 }
 
 function getCurrentUser() {
@@ -66,6 +42,18 @@ function getCurrentUser() {
         });
 }
 
+function getQueryParams() {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+    if (params.error) {
+        document.getElementById("join-error").innerText = params.error
+        document.getElementById("join-error").hidden = false
+    }
+    if (params.label) {
+        document.getElementById("jamlabel-input").value = params.label
+    }
+}
+
 document.getElementById("login-button").addEventListener("click", listenerFunction)
 
 function listenerFunction() {
@@ -83,12 +71,5 @@ function onSpotifyAuth() {
 }
 
 function createJamSession() {
-    fetch('./api/v1/jam/create',
-        {
-            credentials: "include"
-        })
-        .then(response => response.json())
-        .then(json => {
-            window.location.href = "./jam/" + json.label;
-        })
+    window.location.href = "./jam/create";
 }
