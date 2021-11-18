@@ -11,10 +11,17 @@ main {
 .main-text-container {
     width: 100%;
     margin: 10px;
+    flex-grow: 10;
 }
 
-.text-block {
-    margin: 30px 0;
+.titel-text {
+    flex-grow: 5;
+    align-items: center;
+}
+
+.subtitle-text {
+    flex-grow: 2;
+    padding-top: 10px;
 }
 
 .main-content-container {
@@ -22,13 +29,19 @@ main {
 }
 
 .main-create-container {
-    height: 50px;
+    height: 75px;
     width: 80%;
 }
 
 @media (max-width: 1200px) {
     .main-content-container {
         width: 50%;
+    }
+}
+
+@media (max-width: 992px) {
+    .main-content-container {
+        width: 65%;
     }
 }
 
@@ -56,8 +69,9 @@ main {
         padding-top: 10px;
     }
 
-    .text-block {
-        margin: 10px 0;
+    .titel-text {
+        align-items: end;
+        flex-grow: 10;
     }
 
 
@@ -75,27 +89,26 @@ main {
     }
 
     .main-text-container {
-        width: 80%;
-    }
-
-    .main-create-container {
-        width: 100%;
+        width: 85%;
+        margin: 0;
     }
 
 }
 
 @media screen and (max-width: 576px) {
     .main-content-container {
-        width: 90%;
+        width: 100%;
+        padding: 5% 5% 0 5%;
     }
 
     .main-text-container {
-        width: 80%;
+        width: 85%;
+        margin: 0;
     }
 
-    .main-control-container {
-        padding: 0 10px;
-    }
+    /*.main-create-container {*/
+    /*    width: 100%;*/
+    /*}*/
 }
 
 /* ##### Text ##### */
@@ -105,7 +118,7 @@ main {
 }
 
 .main-text-header-large {
-    font-size: 75px;
+    font-size: 100px;
     font-weight: bold;
 }
 
@@ -113,9 +126,25 @@ main {
     font-size: 18px;
 }
 
+@media screen and (max-width: 1600px) {
+    .main-text-header-large {
+        font-size: 75px;
+    }
+}
+
 @media (max-width: 1200px) {
     .main-text-header-large {
-        font-size: 60px;
+        font-size: 75px;
+    }
+
+    .main-text-header {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 992px) {
+    .main-text-header-large {
+        font-size: 65px;
     }
 
     .main-text-header {
@@ -125,19 +154,29 @@ main {
 
 @media (max-width: 768px), (max-height: 768px) {
     .main-text-header-large {
-        font-size: 50px;
+        font-size: 65px;
     }
 
     .main-text-header {
-        font-size: 25px;
-    }
-
-    .main-text-body {
-        font-size: 14px;
+        font-size: 40px;
     }
 }
 
 @media (max-width: 576px), (max-height: 576px) {
+    .main-text-body {
+        font-size: 18px;
+    }
+
+    .main-text-header {
+        font-size: 40px;
+    }
+
+    .main-text-header-large {
+        font-size: 65px;
+    }
+}
+
+@media (max-width: 460px), (max-height: 460px) {
     .main-text-body {
         font-size: 14px;
     }
@@ -189,12 +228,11 @@ main {
 
 @media (max-width: 768px), (max-height: 768px) {
     .jamlabel-input {
-        font-size: 18px;
+        font-size: 30px;
     }
 
     .main-join-container {
-        padding: 5px;
-        height: 50px;
+        height: 75px;
     }
 
     .jamlabel-input-error {
@@ -205,10 +243,22 @@ main {
     }
 }
 
+@media (max-width: 576px), (max-height: 576px) {
+    .jamlabel-input {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 460px), (max-height: 460px) {
+    .jamlabel-input {
+        font-size: 20px;
+    }
+}
+
 /* #### Divider #### */
 
 .main-button-divider {
-    width: 60%;
+    width: 50%;
     text-align: center;
     font-size: 24px;
     height: 75px;
@@ -221,16 +271,53 @@ main {
 }
 
 @media (max-width: 768px), (max-height: 768px) {
-
     .main-button-divider {
         width: 60%;
-        text-align: center;
+    }
+}
+
+@media (max-width: 460px), (max-height: 460px) {
+    .main-button-divider {
         font-size: 16px;
     }
+}
 
-    .main-button-divider > hr {
-        border-width: 0;
-        border-bottom-width: 1px;
+@media screen and (max-height: 576px) {
+    .main-join-container {
+        height: 50px;
     }
 
+    .main-button-divider {
+        height: 50px;
+    }
+
+    .main-create-container {
+        height: 50px;
+    }
+
+    .main-text-header {
+        font-size: 30px;
+    }
+
+    .main-text-header-large {
+        font-size: 55px;
+    }
+
+    .main-text-body {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-height: 460px) {
+    .main-text-header {
+        font-size: 24px;
+    }
+
+    .main-text-header-large {
+        font-size: 35px;
+    }
+
+    .main-text-body {
+        font-size: 14px;
+    }
 }

@@ -1,10 +1,10 @@
 .button {
     width: 100%;
     height: 100%;
-    border-radius: 25px;
     font-weight: bold;
     font-size: 16px;
     text-align: center;
+    border-radius: 15px;
 }
 
 .button.disabled {
@@ -16,9 +16,17 @@
     font-weight: bold;
 }
 
+.login-button {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 10px;
+}
+
 .button-blue {
     background: rgba(0, 166, 237, 0.1);
     color: #00A6ED;
+    border-radius: 20px;
 }
 
 .button-blue:hover {
@@ -33,7 +41,6 @@
 .button-orange {
     background: rgba(255, 149, 10, 0.1);
     color: #FF950A;
-    border-radius: 15px;
 }
 
 .button-orange:hover {
@@ -61,7 +68,7 @@
 
 @media (max-width: 576px), (max-height: 576px) {
     .button-big {
-        font-size: 20px;
+        font-size: 20px !important;
     }
 
     .button {

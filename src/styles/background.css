@@ -75,7 +75,7 @@
         width: 80%;
         height: 50%;
         top: 60px;
-        opacity: 0.3;
+        opacity: 0.5;
         display: flex;
         align-items: center;
         justify-content: right;
@@ -103,6 +103,5 @@
     .svg-container {
         width: 50%;
         float: right;
-
     }
 }
