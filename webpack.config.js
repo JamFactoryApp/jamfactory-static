@@ -12,6 +12,7 @@ pages.forEach(page => {
         htmlPageNames.push(page.split('.html')[0])
     }
 })
+
 let multipleHtmlPlugins = htmlPageNames.map(name => {
     return new HtmlWebpackPlugin({
         template: `./src/${name}.html`,
@@ -31,7 +32,8 @@ module.exports = {
         new MiniCssExtractPlugin(),
         new CopyPlugin({
             patterns: [
-                {from: 'src/assets/robots.txt', to: 'robots.txt'}
+                {from: 'src/assets/robots.txt', to: 'robots.txt'},
+                {from: 'import'}
             ]
         })
     ].concat(multipleHtmlPlugins),

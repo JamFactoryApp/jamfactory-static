@@ -56,3 +56,10 @@ site will automatically reload if you change any of the source files.
 
 **For Windows**: Make sure the src directory is enabled for file sharing in docker.
 See [https://stackoverflow.com/a/60814428](https://stackoverflow.com/a/60814428)
+
+## Adding untracked files
+
+1. Create a folder name ``import`` inside the repository
+2. Add the untracked files to the folder.
+For example: A html file named ``imprint.html`` will later be available under ``localhost:8080/imprint.html``.
+Note: These files will not be included in the webpack build process, any required resources need to be loaded manually in the head
