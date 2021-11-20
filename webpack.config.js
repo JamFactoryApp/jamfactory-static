@@ -22,6 +22,13 @@ let multipleHtmlPlugins = htmlPageNames.map(name => {
     })
 });
 
+let pattern = [
+    {from: 'src/assets/robots.txt', to: 'robots.txt'}
+]
+if (fs.existsSync("import") && fs.readdirSync("import").length !== 0) {
+    pattern.push({from: 'import', to: ''})
+}
+
 module.exports = {
     entry: './src/index.js',
     output: {
@@ -31,10 +38,7 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin(),
         new CopyPlugin({
-            patterns: [
-                {from: 'src/assets/robots.txt', to: 'robots.txt'},
-                {from: 'import'}
-            ]
+            patterns: pattern
         })
     ].concat(multipleHtmlPlugins),
     module: {
