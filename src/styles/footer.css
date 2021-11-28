@@ -1,0 +1,24 @@
+footer {
+    height: 50px;
+    padding: 10px;
+    bottom: 0;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.github-container {
+    width: 150px;
+    text-align: center;
+}
+
+.github-container > a {
+    margin-left: 5px;
+    text-decoration: none;
+}
+
+.impressum {
+    width: 150px;
+    line-height: 30px;
+    text-align: center;
+    text-decoration: none;
+}
