@@ -2,6 +2,7 @@ import "./index.css";
 
 let user;
 let loginButtonAction = onSpotifyAuth;
+let joinButtonAction = onJoin;
 getCurrentUser()
 getQueryParams()
 
@@ -20,6 +21,8 @@ function checkForValidity() {
     document.getElementById("join-error").hidden = true
     if (document.getElementById("jamlabel-input").value.length !== 5) {
         document.getElementById("join-button").classList.add('disabled')
+        document.getElementById("join-button").innerText = "Join"
+        joinButtonAction = onJoin
     } else {
         document.getElementById("join-button").classList.remove('disabled')
     }
@@ -33,7 +36,10 @@ function getCurrentUser() {
         .then(response => response.json())
         .then(json => {
             if (json.joined_label !== '') {
-                window.location.href = "./jam/" + json.joined_label;
+                joinButtonAction = resumeJamSession
+                document.getElementById("jamlabel-input").value = json.joined_label
+                document.getElementById("join-button").innerText = "Return"
+                document.getElementById("join-button").classList.remove('disabled')
             }
             if (json.spotify_authorized) {
                 loginButtonAction = createJamSession
@@ -54,10 +60,13 @@ function getQueryParams() {
     }
 }
 
-document.getElementById("login-button").addEventListener("click", listenerFunction)
-
-function listenerFunction() {
+document.getElementById("login-button").addEventListener("click", listenerFunctionLogin)
+document.getElementById("join-button").addEventListener("click", listenerFunctionJoin)
+function listenerFunctionLogin() {
     loginButtonAction();
+}
+function listenerFunctionJoin() {
+    joinButtonAction();
 }
 
 function onSpotifyAuth() {
@@ -72,4 +81,8 @@ function onSpotifyAuth() {
 
 function createJamSession() {
     window.location.href = "./jam/create";
+}
+
+function resumeJamSession() {
+    window.location.href = "./jam/" +  document.getElementById("jamlabel-input").value;
 }
