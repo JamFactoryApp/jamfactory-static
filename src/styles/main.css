@@ -22,9 +22,7 @@ button {
 }
 
 body {
-    height: 100%;
     background: #121217;
-    width: 100%;
     overflow: hidden;
     position: fixed;
 }

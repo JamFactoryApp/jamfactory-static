@@ -1,11 +1,10 @@
 /* ##### Container ##### */
 
 main {
-    min-height: calc(100vh - 80px);
+    min-height: calc(100% - 80px);
     padding-left: 40px;
     padding-bottom: 40px;
     overflow: hidden;
-    /*position: fixed;*/
 }
 
 .main-text-container {
