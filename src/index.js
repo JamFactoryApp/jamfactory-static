@@ -6,6 +6,9 @@ let joinButtonAction = onJoin;
 getCurrentUser()
 getQueryParams()
 
+document.body.style.height = window.innerHeight + 'px';
+document.body.style.width = window.innerWidth + 'px';
+
 document.getElementById("main-text").innerText = "Listen to all of your favorite songs and the ones of your friends too."
 
 function onJoin() {
